@@ -1,0 +1,51 @@
+<mat-card class="fusion-card">
+  <mat-card-header>
+    <mat-card-title>{{ fusion.name | titlecase }}</mat-card-title>
+    <mat-card-subtitle>Pokémon Fusionado</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image [src]="imageUrl" [alt]="fusion.name">
+
+  <mat-card-content>
+    <div class="types" *ngIf="fusion?.types">
+      <h3>Tipos:</h3>
+      <div class="chips">
+        <mat-chip *ngFor="let type of fusion.types" [color]="getTypeColor(type)" selected>
+          {{ type | titlecase }}
+        </mat-chip>
+      </div>
+    </div>
+
+    <div class="stats" *ngIf="fusion?.stats">
+      <h3>Estadísticas:</h3>
+      <div class="stat-grid">
+        <div *ngFor="let stat of fusion.stats" class="stat-item">
+          <span class="stat-name">{{ stat.name | titlecase }}:</span>
+          <span class="stat-value">{{ stat.value }}</span>
+          <mat-progress-bar 
+            mode="determinate" 
+            [value]="stat.value" 
+            color="primary"
+            class="stat-bar">
+          </mat-progress-bar>
+        </div>
+      </div>
+    </div>
+
+    <div class="moves" *ngIf="fusion?.moves">
+      <h3>Movimientos:</h3>
+      <ul>
+        <li *ngFor="let move of fusion.moves">{{ move | titlecase }}</li>
+      </ul>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions *ngIf="showSaveButton">
+    <button mat-raised-button color="primary" (click)="saveFusion()">
+      💾 Guardar Fusión
+    </button>
+    <button mat-button color="accent" (click)="shareFusion()">
+      🔗 Compartir
+    </button>
+  </mat-card-actions>
+</mat-card>

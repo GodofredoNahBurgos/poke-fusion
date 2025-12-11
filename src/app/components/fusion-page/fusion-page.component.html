@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>PokéFusion</h1>
+  <p class="subtitle">Fusiona 3 Pokémon para crear uno nuevo</p>
+
+  <div *ngIf="loading" class="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Cargando Pokémon...</p>
+  </div>
+
+  <div *ngIf="!loading && pokemons.length > 0">
+    <div class="pokemon-selectors">
+      <h3>Pokémon seleccionados:</h3>
+      <div class="selector-container">
+        <div *ngFor="let pokemon of pokemons; let i = index" class="pokemon-preview">
+          <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+          <p>{{ pokemon.name | titlecase }}</p>
+          <div class="types">
+            <span *ngFor="let type of pokemon.types" class="type-badge"
+              [style.backgroundColor]="getTypeColor(type.type.name)">
+              {{ type.type.name | titlecase }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="refusion()" class="fusion-button">
+      🔄 Re-fusionar
+    </button>
+
+    <button mat-raised-button color="accent" (click)="saveFusion()" [disabled]="!fusionResult"
+      style="margin-left: 10px;">
+      💾 Guardar en Favoritos
+    </button>
+
+    <div *ngIf="fusionResult" class="fusion-result">
+      <h2>¡Fusión creada!</h2>
+      <app-fusion-card [fusion]="fusionResult"></app-fusion-card>
+    </div>
+  </div>
+</div>

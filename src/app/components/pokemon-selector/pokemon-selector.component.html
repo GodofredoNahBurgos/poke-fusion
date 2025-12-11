@@ -1,0 +1,17 @@
+<div class="selector">
+  <h4>Pokémon {{ index + 1 }}</h4>
+  <div class="pokemon-display">
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+    <h3>{{ pokemon.name | titlecase }}</h3>
+    <div class="types">
+      <span *ngFor="let type of pokemon.types" 
+            class="type-badge"
+            [style.backgroundColor]="getTypeColor(type.type.name)">
+        {{ type.type.name | titlecase }}
+      </span>
+    </div>
+  </div>
+  <button mat-raised-button (click)="onRandomize()">
+    🎲 Aleatorio
+  </button>
+</div>

@@ -1,0 +1,79 @@
+.fusion-card {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    display: block;
+    background: #f0f0f0;
+    border-radius: 50%;
+  }
+}
+
+.types {
+  margin: 1rem 0;
+  
+  .chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+}
+
+.stats {
+  margin: 1.5rem 0;
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-name {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .stat-value {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  .stat-bar {
+    height: 8px;
+    border-radius: 4px;
+  }
+}
+
+.moves {
+  margin: 1.5rem 0;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+
+    li {
+      padding: 0.25rem 0;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
